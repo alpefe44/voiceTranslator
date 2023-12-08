@@ -18,6 +18,10 @@ export default [
     {
         language: "İspanyolca",
         image: "https://w7.pngwing.com/pngs/288/791/png-transparent-flag-of-spain-flag-of-spain-flag-of-the-united-states-national-flag-spain-flags-icon-miscellaneous-flag-spanish-thumbnail.png"
+    },
+    {
+        language: "Arapça",
+        image: "https://png.pngtree.com/png-vector/20220511/ourlarge/pngtree-round-country-flag-saudi-arabia-png-image_4570913.png"
     }
 
 ]
