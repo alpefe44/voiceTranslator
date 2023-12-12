@@ -1,12 +1,12 @@
 import React from 'react'
-import HomeScreen from './src/screen/HomeScreen'
 import { Provider } from 'react-redux'
 import { store } from './src/redux/store'
+import Navigation from './src/Router/Navigation'
 
 const App = () => {
   return (
     <Provider store={store}>
-      <HomeScreen></HomeScreen>
+      <Navigation></Navigation>
     </Provider>
   )
 }

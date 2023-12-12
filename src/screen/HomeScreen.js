@@ -39,23 +39,25 @@ const HomeScreen = () => {
 
     const showItem = async (item) => {
         if (item === "Türkçe") {
+            setLanguage(item)
             Tts.setDefaultLanguage('tr-TR');
-            setLanguage("Türkçe")
             await translateText(value, "tr")
                 .then((response) => {
                     Tts.speak(response)
                     setTranslateValue(response)
+                    console.log(response)
                     opacity.value = withTiming(1, { duration: 1000, easing: Easing.inOut(Easing.cubic) })
                     dispatch(addData({
                         word: value,
-                        translation: response
+                        translation: response,
+                        language: item
                     }))
                 })
                 .catch((error) => console.log(error))
         }
         if (item === "İngilizce") {
+            setLanguage(item)
             Tts.setDefaultLanguage('en-US');
-            setLanguage("İngilizce")
             await translateText(value)
                 .then((response) => {
                     Tts.speak(response)
@@ -63,13 +65,14 @@ const HomeScreen = () => {
                     opacity.value = withTiming(1, { duration: 1000, easing: Easing.inOut(Easing.cubic) })
                     dispatch(addData({
                         word: value,
-                        translation: response
+                        translation: response,
+                        language: item
                     }))
                 })
                 .catch((error) => console.log(error))
         } if (item === "Portekizce") {
+            setLanguage(item)
             Tts.setDefaultLanguage('pt-BR');
-            setLanguage("Portekizce")
             await translateText(value, "pt")
                 .then((response) => {
                     Tts.speak(response)
@@ -77,14 +80,15 @@ const HomeScreen = () => {
                     opacity.value = withTiming(1, { duration: 1000, easing: Easing.inOut(Easing.cubic) })
                     dispatch(addData({
                         word: value,
-                        translation: response
+                        translation: response,
+                        language: item
                     }))
                 })
                 .catch((error) => console.log(error))
         }
         if (item === "Almanca") {
+            setLanguage(item)
             Tts.setDefaultLanguage('pt-BR');
-            setLanguage("Almanca")
             await translateText(value, "de")
                 .then((response) => {
                     Tts.speak(response)
@@ -92,14 +96,15 @@ const HomeScreen = () => {
                     opacity.value = withTiming(1, { duration: 1000, easing: Easing.inOut(Easing.cubic) })
                     dispatch(addData({
                         word: value,
-                        translation: response
+                        translation: response,
+                        language: item
                     }))
                 })
                 .catch((error) => console.log(error))
         }
         if (item === "İspanyolca") {
-            Tts.setDefaultLanguage('pt-BR');
-            setLanguage("İspanyolca")
+            setLanguage(item)
+            await Tts.setDefaultLanguage('pt-BR');
             await translateText(value, "es")
                 .then((response) => {
                     Tts.speak(response)
@@ -107,7 +112,8 @@ const HomeScreen = () => {
                     opacity.value = withTiming(1, { duration: 1000, easing: Easing.inOut(Easing.cubic) })
                     dispatch(addData({
                         word: value,
-                        translation: response
+                        translation: response,
+                        language: item
                     }))
                 })
                 .catch((error) => console.log(error))
@@ -143,7 +149,7 @@ const HomeScreen = () => {
                     <Image style={{ height: 100, width: 100 }} source={{ uri: "https://img.pixers.pics/pho_wat(s3:700/FO/45/64/30/91/700_FO45643091_4099d6cd098350638d3624d316498241.jpg,663,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,443,650,jpg)/cikartmalar-vektor-klasik-mikrofon.jpg.jpg" }}></Image>
                 </Animated.View>
                 <View style={{ width: '100%' }}>
-                    <TextInput value={value} onChangeText={(text) => setValue(text)} placeholder='Text girin...' multiline style={{ padding: 15, borderWidth: .3, marginHorizontal: 15 }}></TextInput>
+                    <TextInput maxLength={20} value={value} onChangeText={(text) => setValue(text)} placeholder='Text girin...' multiline style={{ padding: 15, borderWidth: .3, marginHorizontal: 15 }}></TextInput>
                 </View>
 
                 <Animated.View style={{ backgroundColor: 'white', marginVertical: 20 }}>
